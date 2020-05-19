@@ -176,6 +176,10 @@ class Cell
                 return $this->calculatedValue; // Fallback if calculation engine does not support the formula.
             }
 
+            if (empty($result) && $this->calculatedValue !== null) {
+                return $this->calculatedValue;
+            }
+
             return $result;
         } elseif ($this->value instanceof RichText) {
             return $this->value->getPlainText();
